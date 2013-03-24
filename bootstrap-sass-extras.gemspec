@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["doinsist@gmail.com"]
   gem.description   = %q{bootstrap-sass extras.}
   gem.summary       = %q{bootstrap-sass extras.}
-  gem.homepage      = "https://github.com/doabit/bootstrap-sass-extra"
+  gem.homepage      = "https://github.com/doabit/bootstrap-sass-extras"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
