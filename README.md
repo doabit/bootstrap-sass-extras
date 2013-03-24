@@ -19,9 +19,17 @@ Or install it yourself as:
 
     $ gem install bootstrap-sass-extras
 
-## Generating layouts and views
+## Generating locale, layouts and views
 
 You can run following generators to get started with Twitter Bootstrap quickly.
+
+Generate locale
+
+
+Usage:
+
+
+    rails g bootstrap:install
 
 
 Layout (generates Twitter Bootstrap compatible layout) - (Haml and Slim supported)
