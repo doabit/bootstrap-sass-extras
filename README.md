@@ -117,7 +117,7 @@ class ExamplesController < ApplicationController
 end
 ```
 
-### Glyp hHelper
+### Glyp Helper
 
 ```ruby
 glyph(:share_alt)
