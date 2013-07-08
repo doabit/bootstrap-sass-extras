@@ -33,5 +33,10 @@ describe BootstrapFlashHelper do
        bootstrap_flash.should == ""
      end
 
+     it "should return no message when the message is blank" do
+       stub!(:flash).and_return({:notice => ""})
+       bootstrap_flash.should == ""
+     end
+
    end
 end
