@@ -73,6 +73,20 @@ Notice the plural usage of the resource to generate bootstrap:themed.
 
 ## Using Helpers
 
+### Viewport Meta Helper
+Add the viewport meta helper `<%= viewport_meta_tag %>` to your layout
+(built-in with layout generator) to render the required meta tag for Bootstrap:
+
+    <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+
+You can change the content value by passing a hash as an argument:
+
+    <%= viewport_meta_tag(:maximum_scale => "1.0") %>
+
+Renders:
+
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport" />
+
 ### Flash helper
 Add flash helper `<%= bootstrap_flash %>` to your layout (built-in with layout generator)
 
