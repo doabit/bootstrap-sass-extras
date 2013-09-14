@@ -3,6 +3,7 @@
 ## Master (unreleased)
 
 * Adjust bootstrap_flash to match bootstrap alerts by [@jonwaghorn][]
+* Rails Form Helper for Bootstrap META tag  by [@dabit][]
 
 ## Release 0.0.4
 
@@ -23,3 +24,4 @@
 
 
 [@jonwaghorn]: https://github.com/jonwaghorn
+[@dabit]: https://github.com/dabit
