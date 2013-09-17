@@ -1,6 +1,8 @@
 # Changelog
 
-## Master (unreleased)
+## 0.0.6 (unreleased)
+
+* Update to bootstrap 3.0
 
 ## Release 0.0.5
 

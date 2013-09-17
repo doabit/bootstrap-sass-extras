@@ -13,13 +13,17 @@
   %tbody
     - @<%= plural_resource_name %>.each do |<%= resource_name %>|
       %tr
-        %td= link_to <%= resource_name %>.id, <%= singular_controller_routing_path %>_path(<%= resource_name %>)
+        %td= <%= resource_name %>.id
         <%- columns.each do |column| -%>
         %td= <%= resource_name %>.<%= column.name %>
         <%- end -%>
-        %td=l <%= resource_name %>.created_at
+        %td=l <%= resource_name %>.created_at, format: :long
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_<%= singular_controller_routing_path %>_path(<%= resource_name %>), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), <%= singular_controller_routing_path %>_path(<%= resource_name %>), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          = link_to <%= singular_controller_routing_path %>_path(<%= resource_name %>), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do
+            = glyph 'info-sign'
+          = link_to edit_<%= singular_controller_routing_path %>_path(<%= resource_name %>), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do
+            = glyph 'pencil'
+          = link_to <%= singular_controller_routing_path %>_path(<%= resource_name %>), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }"  do
+            = glyph 'remove'
 
 = link_to t('.new', :default => t("helpers.links.new")), new_<%= singular_controller_routing_path %>_path, :class => 'btn btn-primary'

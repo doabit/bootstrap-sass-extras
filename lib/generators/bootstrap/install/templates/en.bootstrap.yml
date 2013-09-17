@@ -11,6 +11,7 @@ en:
       destroy: "Delete"
       new: "New"
       edit: "Edit"
+      show: "Show"
     titles:
       edit: "Edit"
       save: "Save"

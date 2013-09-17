@@ -5,8 +5,8 @@
 <%- if ::SimpleForm::FormBuilder.instance_methods.include?(:wrapped_button) -%>
   = f.button :wrapped, :cancel => <%= controller_routing_path %>_path
 <%- else -%>
-  .form-actions
-    = f.button :submit, :class => 'btn-primary'
-    '
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), <%= controller_routing_path %>_path, :class => 'btn'
+  .form-group
+    .col-md-offset-2.col-md-10
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), <%= controller_routing_path %>_path, :class => 'btn btn-default'
 <%- end -%>

@@ -5,6 +5,10 @@
   [1]: https://github.com/thomas-mcdonald/bootstrap-sass
   [2]: https://github.com/seyhunak/twitter-bootstrap-rails
 
+## Note
+
+From version 0.0.6, only support bootstrap  3.0, if you want to use bootstrap 2, please use version 0.0.5.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -95,12 +99,12 @@ You can create modals easily using the following example. The header, body, and 
 The href of the button to launch the modal must matche the id of the modal dialog.
 
 ```ruby
-<%= content_tag :a, "Modal", :href => "#modal", :class => 'btn', :data => {:toggle => modal'} %>
-
+<%= modal_toggle 'Modal', dialog: '#modal'%>
 <%= modal_dialog :id => "modal",
-         :header => { :show_close => true, :dismiss => 'modal', :title => 'Modal header' },
-                 :body   => 'This is the body',
-                 :footer => content_tag(:button, 'Save', :class => 'btn') %>
+         :header => { :show_close => true, :title => 'Modal header' },
+         :body   => 'This is the body',
+         :footer => content_tag(:button, 'Save', :class => 'btn btn-primary')
+%>
 ```
 
 ### Breadcrumbs Helpers
@@ -134,10 +138,8 @@ end
 ### Glyp Helper
 
 ```ruby
-glyph(:share_alt)
-# => <i class="icon-share-alt"></i>
-glyph(:lock, :white)
-# => <i class="icon-lock icon-white"></i>
+glyph(:star)
+# => <i class="glyphicon glyphicon-star"></i>
 ```
 
 ## Contributing
