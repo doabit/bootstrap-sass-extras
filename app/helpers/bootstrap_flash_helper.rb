@@ -1,12 +1,12 @@
 module BootstrapFlashHelper
-  ALERT_TYPES = [:error, :info, :success, :warning]
+  ALERT_TYPES = [:danger, :info, :success, :warning]
 
   def bootstrap_flash
     output = ''
     flash.each do |type, message|
       next if message.blank?
       type = :success if type == :notice
-      type = :error   if type == :alert
+      type = :danger   if type == :alert
       next unless ALERT_TYPES.include?(type)
       output += flash_container(type, message)
     end
