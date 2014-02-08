@@ -1,6 +1,6 @@
 module TwitterBreadcrumbsHelper
-  def render_breadcrumbs(divider = '/', &block)
-    content = render :partial => 'twitter-bootstrap/breadcrumbs', :layout => false, :locals => { :divider => divider }
+  def render_breadcrumbs(&block)
+    content = render 'bootstrap_sass_extras/breadcrumbs'
     if block_given?
       capture(content, &block)
     else
