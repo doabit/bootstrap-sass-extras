@@ -1,42 +1,47 @@
 require 'spec_helper'
 
 describe BootstrapFlashHelper do
-  describe "bootstrap_flash" do
+  describe "#bootstrap_flash" do
+    let(:html) { %(<div class="alert alert-%s alert-dismissable"><button class="close" data-dismiss="alert" type="button">&times;</button>%s</div>) }
 
-     it "should return flash message" do
-       stub!(:flash).and_return({:warning => "Update Warning!"})
-       bootstrap_flash.should == "<div class=\"alert alert-warning\"><a class=\"close\" data-dismiss=\"alert\">&times;</a>Update Warning!</div>"
-     end
+    def flash_test(input, output)
+      stub!(:flash).and_return(input)
+      bootstrap_flash.should == html % output.to_a.flatten
+    end
 
-     it "should return alert-success message when using notice message" do
-       stub!(:flash).and_return({:notice => "Update Success!"})
-       bootstrap_flash.should == "<div class=\"alert alert-success\"><a class=\"close\" data-dismiss=\"alert\">&times;</a>Update Success!</div>"
-     end
+    it "return alert-warning when sent a :warning message" do
+      message = "Update Warning!"
+      flash_test({ warning: message }, { warning: message })
+    end
 
-     it "should return alert-error message when using notice error" do
-       stub!(:flash).and_return({:error => "Update Failed!"})
-       bootstrap_flash.should == "<div class=\"alert alert-error\"><a class=\"close\" data-dismiss=\"alert\">&times;</a>Update Failed!</div>"
-     end
+    it "returns alert-success when sent a :notice message" do
+      message = "Update Success!"
+      flash_test({ notice: message }, { success: message })
+    end
 
-     it "should return alert-error message when using alert message" do
-       stub!(:flash).and_return({:alert => "Update Alert!"})
-       bootstrap_flash.should == "<div class=\"alert alert-error\"><a class=\"close\" data-dismiss=\"alert\">&times;</a>Update Alert!</div>"
-     end
+    it "returns alert-danger when sent an :error message" do
+      message = "Update Failed!"
+      flash_test({ error: message }, { danger: message })
+    end
 
-     it "should return alert-info message when using info message" do
-       stub!(:flash).and_return({:info => "Update Information!"})
-       bootstrap_flash.should == "<div class=\"alert alert-info\"><a class=\"close\" data-dismiss=\"alert\">&times;</a>Update Information!</div>"
-     end
+    it "returns alert-danger when sent an :alert message" do
+      message = "Update Alert!"
+      flash_test({ alert: message }, { danger: message })
+    end
 
-     it "should return no message when using an undefined message" do
-       stub!(:flash).and_return({:undefined => "Update Undefined!"})
-       bootstrap_flash.should == ""
-     end
+    it "returns alert-info when sent a info message" do
+      message = "Update Information!"
+      flash_test({ info: message }, { info: message })
+    end
 
-     it "should return no message when the message is blank" do
-       stub!(:flash).and_return({:notice => ""})
-       bootstrap_flash.should == ""
-     end
+    it "returns custom type when sent an unknown message" do
+      message = "Update Unknown!"
+      flash_test({ undefined: message }, { undefined: message })
+    end
 
-   end
+    it "returns nil when sent a blank message" do
+      stub!(:flash).and_return(notice: "")
+      bootstrap_flash.should be_nil
+    end
+  end
 end
