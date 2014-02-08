@@ -1,9 +1,14 @@
 module GlyphHelper
   # ==== Examples
-  # glyph(:share_alt)
-  # # => <i class="icon-share-alt"></i>
+  #
+  # glyph(:search)
+  #   => <span class="glyphicon glyphicon-search"></span>
+  # glyph(:search, :paperclip)
+  #   => <span class="glyphicon glyphicon-search"></span><span class="glyphicon glyphicon-paperclip"></span>
 
-  def glyph(*names)
-    content_tag :i, nil, :class => names.map{|name| "glyphicon glyphicon-#{name.to_s.gsub('_','-')}" }
+  def glyph(*glyphicon_names)
+    safe_join(glyphicon_names.map do |name|
+                content_tag :span, nil, class: "glyphicon glyphicon-#{name.to_s.parameterize}"
+              end, "")
   end
 end
