@@ -139,7 +139,10 @@ end
 
 ```ruby
 glyph(:star)
-# => <i class="glyphicon glyphicon-star"></i>
+# => <span class="glyphicon glyphicon-star"></span>
+
+glyph(:star, :paperclip)
+# => <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-paperclip"></span>
 ```
 
 ## Contributing
