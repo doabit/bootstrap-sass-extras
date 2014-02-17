@@ -2,14 +2,19 @@ module BootstrapSassExtras
   module BreadCrumbs
     def self.included(base)
       base.extend(ClassMethods)
+      base.helper_method :breadcrumbs?,
+                         :breadcrumb_names,
+                         :last_breadcrumb_name
     end
 
     module ClassMethods
       def add_breadcrumb(name, url, options = {})
         class_name = self.name
         before_filter options do |controller|
-          name = controller.send :translate_breadcrumb, name, class_name if name.is_a?(Symbol)
-          controller.send :add_breadcrumb, name, url
+          if name.is_a?(Symbol)
+            name = controller.public_send :translate_breadcrumb, name, class_name
+          end
+          controller.public_send :add_breadcrumb, name, url
         end
       end
     end
@@ -20,7 +25,7 @@ module BootstrapSassExtras
       @breadcrumbs ||= []
       name = translate_breadcrumb(name, self.class.name) if name.is_a?(Symbol)
       url = send(url.to_s) if url =~ /_path|_url|@/
-        @breadcrumbs << { name: name, url: url, options: options }
+      @breadcrumbs << { name: name, url: url, options: options }
     end
 
     def translate_breadcrumb(name, class_name)
@@ -30,6 +35,23 @@ module BootstrapSassExtras
       scope << namespace
 
       I18n.t name, scope: scope
+    end
+
+    def clear_breadcrumbs
+      @breadcrumbs = nil
+    end
+
+    def breadcrumbs?
+      Array(@breadcrumbs).any?
+    end
+
+    def breadcrumb_names
+      Array(@breadcrumbs).map { |breadcrumb| breadcrumb[:name] }
+    end
+
+    def last_breadcrumb_name
+      return unless crumb = Array(@breadcrumbs).last
+      crumb[:name]
     end
   end
 end
