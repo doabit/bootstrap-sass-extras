@@ -1,10 +1,6 @@
-<% if @breadcrumbs.present? %>
-  <ol class="breadcrumb">
-    <% @breadcrumbs[0..-2].each do |crumb| %>
-      <li><%= link_to crumb[:name], crumb[:url], crumb[:options] %></li>
-    <% end %>
-    <li class="active">
-      <%= @breadcrumbs.last[:name] %>
-    </li>
-  </ol>
-<% end %>
+<ol class="breadcrumb">
+  <% @breadcrumbs[0..-2].each do |crumb| %>
+    <li><%= link_to crumb[:name], crumb[:url], crumb[:options] %></li>
+  <% end %>
+  <li class="active"><%= last_breadcrumb_name %></li>
+</ol>
