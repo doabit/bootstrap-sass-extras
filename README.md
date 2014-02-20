@@ -7,7 +7,7 @@
 
 ## Note
 
-From version 0.0.6, only support bootstrap  3.0, if you want to use bootstrap 2, please use version 0.0.5.
+From version 0.0.6, only support bootstrap 3. If you want to use bootstrap 2, please use version 0.0.5.
 
 ## Installation
 
@@ -32,46 +32,47 @@ Generate locale
 
 Usage:
 
-
-    rails g bootstrap:install
-
+```ruby
+rails g bootstrap:install
+```
 
 Layout (generates Twitter Bootstrap compatible layout) - (Haml and Slim supported)
 
 
 Usage:
 
-
-    rails g bootstrap:layout [LAYOUT_NAME] [*fixed or fluid]
-
+```ruby
+rails g bootstrap:layout [LAYOUT_NAME] [*fixed or fluid]
+```
 
 Example of a fixed layout:
 
-
-    rails g bootstrap:layout application fixed
-
+```ruby
+rails g bootstrap:layout application fixed
+```
 
 Example of a responsive layout:
 
-
-    rails g bootstrap:layout application fluid
-
+```ruby
+rails g bootstrap:layout application fluid
+```
 
 Themed (generates Twitter Bootstrap compatible scaffold views.) - (Haml and Slim supported)
 
 
 Usage:
 
-
-    rails g bootstrap:themed [RESOURCE_NAME]
-
+```ruby
+rails g bootstrap:themed [RESOURCE_NAME]
+```
 
 Example:
 
-
-    rails g scaffold Post title:string description:text
-    rake db:migrate
-    rails g bootstrap:themed Posts
+```ruby
+rails g scaffold Post title:string description:text
+rake db:migrate
+rails g bootstrap:themed Posts
+```
 
 Notice the plural usage of the resource to generate bootstrap:themed.
 
@@ -81,24 +82,30 @@ Notice the plural usage of the resource to generate bootstrap:themed.
 Add the viewport meta helper `<%= viewport_meta_tag %>` to your layout
 (built-in with layout generator) to render the required meta tag for Bootstrap:
 
-    <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+```html
+<meta content="width=device-width,initial-scale=1.0" name="viewport" />
+```
 
 You can change the content value by passing a hash as an argument:
 
-    <%= viewport_meta_tag(:maximum_scale => "1.0") %>
+```erb
+<%= viewport_meta_tag(:maximum_scale => "1.0") %>
+```
 
 Renders:
 
-    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport" />
+```html
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport" />
+```
 
 ### Flash helper
 Add flash helper `<%= bootstrap_flash %>` to your layout (built-in with layout generator)
 
 ### Modal Helper
 You can create modals easily using the following example. The header, body, and footer all accept content_tag or plain html.
-The href of the button to launch the modal must matche the id of the modal dialog.
+The href of the button to launch the modal must match the id of the modal dialog.
 
-```ruby
+```erb
 <%= modal_toggle 'Modal', dialog: '#modal'%>
 <%= modal_dialog :id => "modal",
          :header => { :show_close => true, :title => 'Modal header' },
@@ -111,8 +118,6 @@ The href of the button to launch the modal must matche the id of the modal dialo
 
 *Notice* If your application is using [breadcrumbs-on-rails](https://github.com/weppos/breadcrumbs_on_rails) you will have a namespace collision with the add_breadcrumb method.
 You do not need to use these breadcrumb gems since this gem provides the same functionality out of the box without the additional dependency.
-
-Add breadcrumbs helper `<%= render_breadcrumbs %>` to your layout.
 
 ```ruby
 class ApplicationController
@@ -130,18 +135,55 @@ class ExamplesController < ApplicationController
   def show
     @example = Example.find params[:id]
     add_breadcrumb @example.name, example_path(@example)
-    # add_breadcrumb :show, example_path(@example)
+    add_breadcrumb :show, example_path(@example)
   end
 end
 ```
 
-### Glyp Helper
+Finally, add the `<%= render_breadcrumbs %>` helper to your layout.
+
+You can wrap the breadcrumbs in an HTML element by using the block form like this:
+
+```erb
+<%= render_breadcrumbs do |breadcrumbs| %>
+  <%= content_tag(:div, breadcrumbs, class: "container") %>
+<% end %>
+
+# =>
+# <div class="container">
+#   <ol class="breadcrumb">
+#     <li> ... </li>
+#     <li class="active"> ... </li>
+#   </ol>
+# </div>
+```
+
+There are also a few interface methods available for working with the internal breadcrumbs hashes. The following methods are available in controllers and views.
 
 ```ruby
-glyph(:star)
+# Given previously added breadcrumbs:
+
+breadcrumbs?
+# => true
+
+breadcrumb_names
+# => ["example", "show"]
+```
+
+The following method is available to controllers only.
+
+```ruby
+clear_breadcrumbs
+# => nil
+```
+
+### Glyph Helper
+
+```erb
+<%= glyph(:star) %>
 # => <span class="glyphicon glyphicon-star"></span>
 
-glyph(:star, :paperclip)
+<%= glyph(:star, :paperclip) %>
 # => <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-paperclip"></span>
 ```
 

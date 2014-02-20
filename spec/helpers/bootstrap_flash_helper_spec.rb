@@ -9,7 +9,7 @@ describe BootstrapFlashHelper do
       bootstrap_flash.should == html % output.to_a.flatten
     end
 
-    it "return alert-warning when sent a :warning message" do
+    it "returns alert-warning when sent a :warning message" do
       message = "Update Warning!"
       flash_test({ warning: message }, { warning: message })
     end
