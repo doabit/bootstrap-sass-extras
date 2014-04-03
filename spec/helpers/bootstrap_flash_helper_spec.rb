@@ -39,8 +39,18 @@ describe BootstrapFlashHelper do
       flash_test({ undefined: message }, { undefined: message })
     end
 
+    it "properly handles string types" do
+      message = "String to Symbol Test."
+      flash_test({ "info" => message }, { info: message })
+    end
+
     it "returns nil when sent a blank message" do
       stub!(:flash).and_return(notice: "")
+      bootstrap_flash.should be_nil
+    end
+
+    it "returns nil when message doesn't have an implicit conversion to String" do
+      stub!(:flash).and_return(notice: true)
       bootstrap_flash.should be_nil
     end
   end

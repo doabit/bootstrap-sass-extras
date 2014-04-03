@@ -12,9 +12,9 @@ module BootstrapSassExtras
         class_name = self.name
         before_filter options do |controller|
           if name.is_a?(Symbol)
-            name = controller.public_send :translate_breadcrumb, name, class_name
+            name = controller.send :translate_breadcrumb, name, class_name
           end
-          controller.public_send :add_breadcrumb, name, url
+          controller.send :add_breadcrumb, name, url
         end
       end
     end
