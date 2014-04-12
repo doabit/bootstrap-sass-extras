@@ -1,8 +1,10 @@
 # Changelog
 
-## 0.0.6 (unreleased)
+## Release 0.0.6
 
 * Update to bootstrap 3.0
+* Add a `badge(badge_count)` helper by [@pdobb][]
+* Clean up codes by [@pdobb][]
 
 ## Release 0.0.5
 
@@ -28,4 +30,5 @@
 
 
 [@jonwaghorn]: https://github.com/jonwaghorn
+[@pdobb]: https://github.com/pdobb
 [@dabit]: https://github.com/dabit

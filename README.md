@@ -187,6 +187,13 @@ clear_breadcrumbs
 # => <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-paperclip"></span>
 ```
 
+### Badge Helper
+
+```erb
+<%= badge(2) %>
+# => <span class="badge">2</span>
+```
+
 ## Contributing
 
 1. Fork it
