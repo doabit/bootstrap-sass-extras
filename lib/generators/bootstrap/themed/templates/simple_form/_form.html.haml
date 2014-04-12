@@ -1,4 +1,4 @@
-= simple_form_for @<%= resource_name %>, :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for @<%= resource_name %>, :html => { :class => 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f|
 <%- columns.each do |column| -%>
   = f.input :<%= column.name %>
 <%- end -%>
@@ -6,7 +6,7 @@
   = f.button :wrapped, :cancel => <%= controller_routing_path %>_path
 <%- else -%>
   .form-group
-    .col-md-offset-2.col-md-10
+    .col-sm-offset-3.col-sm-9
       = f.submit nil, :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), <%= controller_routing_path %>_path, :class => 'btn btn-default'
 <%- end -%>
