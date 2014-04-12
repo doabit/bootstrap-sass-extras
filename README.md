@@ -5,6 +5,8 @@
   [1]: https://github.com/thomas-mcdonald/bootstrap-sass
   [2]: https://github.com/seyhunak/twitter-bootstrap-rails
 
+  [![Build Status](https://travis-ci.org/doabit/bootstrap-sass-extras.png?branch=master)](https://travis-ci.org/doabit/bootstrap-sass-extras)
+
 ## Note
 
 From version 0.0.6, only support bootstrap 3. If you want to use bootstrap 2, please use version 0.0.5.
