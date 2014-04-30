@@ -84,6 +84,14 @@ describe TwitterBreadcrumbsHelper do
           end.should == "<div>#{html}</div>"
         end
       end
+
+      describe "custom breadcrumbs view" do
+        let(:html) { "Custom Breadcrumbs Loaded\n" }
+
+        it "returns the custom breadcrumbs view content" do
+          helper.render_breadcrumbs(view: 'application/custom_breadcrumbs').should == html
+        end
+      end
     end
 
     describe "#breadcrumbs?" do
