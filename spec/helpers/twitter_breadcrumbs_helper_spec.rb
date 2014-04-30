@@ -89,7 +89,7 @@ describe TwitterBreadcrumbsHelper do
         let(:html) { "Custom Breadcrumbs Loaded\n" }
 
         it "returns the custom breadcrumbs view content" do
-          helper.render_breadcrumbs(view: 'application/custom_breadcrumbs').should == html
+          helper.render_breadcrumbs(partial: 'application/custom_breadcrumbs').should == html
         end
       end
     end
