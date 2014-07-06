@@ -1,6 +1,6 @@
 - model_class = <%= resource_name.classify %>
 .page-header
-  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  h1=t '.title', default: model_class.model_name.human.pluralize.titleize
 table.table.table-striped
   thead
     tr
@@ -9,7 +9,7 @@ table.table.table-striped
       th= model_class.human_attribute_name(:<%= column.name %>)
       <%- end -%>
       th= model_class.human_attribute_name(:created_at)
-      th=t '.actions', :default => t("helpers.actions")
+      th=t '.actions', default: t("helpers.actions")
   tbody
     - @<%= plural_resource_name %>.each do |<%= resource_name %>|
       tr
@@ -19,11 +19,11 @@ table.table.table-striped
         <%- end -%>
         td=l <%= resource_name %>.created_at, format: :long
         td
-          = link_to <%= singular_controller_routing_path %>_path(<%= resource_name %>), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do
+          = link_to <%= singular_controller_routing_path %>_path(<%= resource_name %>), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do
             = glyph 'info-sign'
-          = link_to edit_<%= singular_controller_routing_path %>_path(<%= resource_name %>), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do
+          = link_to edit_<%= singular_controller_routing_path %>_path(<%= resource_name %>), class: 'btn btn-xs', title: "#{ t('.edit', default: t('helpers.links.edit')) }" do
             = glyph 'pencil'
-          = link_to <%= singular_controller_routing_path %>_path(<%= resource_name %>), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }"  do
+          = link_to <%= singular_controller_routing_path %>_path(<%= resource_name %>), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do
             = glyph 'remove'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_<%= singular_controller_routing_path %>_path, :class => 'btn btn-primary'
+= link_to t('.new', default: t("helpers.links.new")), new_<%= singular_controller_routing_path %>_path, class: 'btn btn-primary'
