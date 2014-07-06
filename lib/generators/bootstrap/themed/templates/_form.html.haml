@@ -1,11 +1,11 @@
-= form_for @<%= resource_name %>, :html => { :class => 'form-horizontal' } do |f|
+= form_for @<%= resource_name %>, html: { class: 'form-horizontal' } do |f|
   <%- columns.each do |column| -%>
   .form-group
-    = f.label :<%= column.name %>, :class => 'control-label col-md-2'
+    = f.label :<%= column.name %>, class: 'control-label col-md-2'
     .col-md-10
-      = f.<%= column.field_type %> :<%= column.name %>, :class => '<%= column.field_type %> form-control'
+      = f.<%= column.field_type %> :<%= column.name %>, class: '<%= column.field_type %> form-control'
   <%- end -%>
   .form-group
     .col-md-offset-2.col-md-10
-      = f.submit nil, :class => 'btn btn-primary'
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), <%= controller_routing_path %>_path, :class => 'btn btn-default'
+      = f.submit nil, class: 'btn btn-primary'
+      = link_to t('.cancel', default: t("helpers.links.cancel")), <%= controller_routing_path %>_path, class: 'btn btn-default'
