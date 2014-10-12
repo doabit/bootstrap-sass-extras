@@ -160,6 +160,12 @@ You can wrap the breadcrumbs in an HTML element by using the block form like thi
 # </div>
 ```
 
+You can also optionally specify which custom view partial you would like to use for rendering the breadcrumbs:
+
+```erb
+<%= render_breadcrumbs partial: 'path/to/custom/breadcrumbs' %>
+```
+
 There are also a few interface methods available for working with the internal breadcrumbs hashes. The following methods are available in controllers and views.
 
 ```ruby
