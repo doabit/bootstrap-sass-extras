@@ -1,13 +1,13 @@
 - model_class = <%= resource_name.classify %>
-div class="page-header"
-  h1=t '.title', :default => model_class.model_name.human.titleize
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
 
 .fieldset
-  dl
+  %dl
     <%- columns.each do |column| -%>
-      dt.label.label-default= model_class.human_attribute_name(:<%= column.name %>)
-      dd
-        pre.prettyprint= @<%= resource_name %>.<%= column.name %>
+    %dt.label.label-default= model_class.human_attribute_name(:<%= column.name %>)
+    %dd
+      %pre.prettyprint= @<%= resource_name %>.<%= column.name %>
     <%- end -%>
 
 .form-group
