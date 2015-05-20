@@ -9,6 +9,7 @@ module BootstrapSassExtras
         ActionController::Base.send :helper, BadgeHelper
         ActionController::Base.send :helper, ModalHelper
         ActionController::Base.send :helper, TwitterBreadcrumbsHelper
+        ActionController::Base.send :helper, UrlHelper
         ActionController::Base.send :include, BootstrapSassExtras::BreadCrumbs
       end
     end
