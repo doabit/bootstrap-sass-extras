@@ -209,7 +209,12 @@ In your views:
 <% end %>
 ```
 
-The `nav_to` helper accepts the same methods that the `link_to` helper accepts.
+The `tabs` helper declares that a tab component is being used. Alternatively, the `pills` helper can
+be used in the same manner. Other classes can be specified in the `class` hash argument, the `nav`
+class need not be specified.
+
+The `nav_to` helper accepts the same methods that the `link_to` helper accepts, but also 
+automatically applies the `active` class to the active link.
 
 ### Glyph Helper
 
