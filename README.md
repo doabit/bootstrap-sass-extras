@@ -185,6 +185,32 @@ clear_breadcrumbs
 # => nil
 ```
 
+### Nav Helper
+
+To render the Bootstrap example:
+
+```html
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="/">Home</a></li>
+  <li role="presentation"><a href="/profile">Profile</a></li>
+  <li role="presentation"><a href="/messages">Messages</a></li>
+</ul>
+```
+
+In your views:
+
+```erb
+<%= tabs do %>
+  <%= nav_to('Home', root_path) %>
+  <%= nav_to(profile_path) do %>
+    Profile
+  <% end %>
+  <%= nav_to('Messages', controller: users, action: :messages) %>
+<% end %>
+```
+
+The `nav_to` helper accepts the same methods that the `link_to` helper accepts.
+
 ### Glyph Helper
 
 ```erb
