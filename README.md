@@ -185,6 +185,37 @@ clear_breadcrumbs
 # => nil
 ```
 
+### Nav Helper
+
+To render the Bootstrap example:
+
+```html
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="/">Home</a></li>
+  <li role="presentation"><a href="/profile">Profile</a></li>
+  <li role="presentation"><a href="/messages">Messages</a></li>
+</ul>
+```
+
+In your views:
+
+```erb
+<%= tabs do %>
+  <%= nav_to('Home', root_path) %>
+  <%= nav_to(profile_path) do %>
+    Profile
+  <% end %>
+  <%= nav_to('Messages', controller: users, action: :messages) %>
+<% end %>
+```
+
+The `tabs` helper declares that a tab component is being used. Alternatively, the `pills` helper can
+be used in the same manner. Other classes can be specified in the `class` hash argument, the `nav`
+class need not be specified.
+
+The `nav_to` helper accepts the same methods that the `link_to` helper accepts, but also 
+automatically applies the `active` class to the active link.
+
 ### Glyph Helper
 
 ```erb
