@@ -200,7 +200,7 @@ To render the Bootstrap example:
 In your views:
 
 ```erb
-<%= tabs do %>
+<%= nav do %>
   <%= nav_to('Home', root_path) %>
   <%= nav_to(profile_path) do %>
     Profile
