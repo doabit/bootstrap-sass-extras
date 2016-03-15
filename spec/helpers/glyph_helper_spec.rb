@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GlyphHelper do
+describe GlyphHelper, :type => :helper do
   describe "#glyph" do
     let(:html) { %(<span class="glyphicon glyphicon-%s"></span>) }
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TwitterBreadcrumbsHelper do
+describe TwitterBreadcrumbsHelper, :type => :helper do
   describe "given one breadcrumb" do
     before do
       controller.send(:add_breadcrumb, "Name", "URL")
@@ -30,7 +30,7 @@ describe TwitterBreadcrumbsHelper do
 
     describe "#breadcrumbs?" do
       it "returns true" do
-        helper.breadcrumbs?.should be_true
+        helper.breadcrumbs?.should be_truthy
       end
     end
 
@@ -50,9 +50,9 @@ describe TwitterBreadcrumbsHelper do
 
     describe "#clear_breadcrumbs" do
       it "empties all existing breadcrumbs" do
-        helper.breadcrumbs?.should be_true
+        helper.breadcrumbs?.should be_truthy
         controller.send(:clear_breadcrumbs)
-        helper.breadcrumbs?.should be_false
+        helper.breadcrumbs?.should be_falsey
       end
     end
   end
@@ -96,8 +96,8 @@ describe TwitterBreadcrumbsHelper do
 
     describe "#breadcrumbs?" do
       it "returns true" do
-        helper.breadcrumbs?.should be_true
-        controller.send(:breadcrumbs?).should be_true
+        helper.breadcrumbs?.should be_truthy
+        controller.send(:breadcrumbs?).should be_truthy
       end
     end
 
@@ -117,9 +117,9 @@ describe TwitterBreadcrumbsHelper do
 
     describe "#clear_breadcrumbs" do
       it "empties all existing breadcrumbs" do
-        helper.breadcrumbs?.should be_true
+        helper.breadcrumbs?.should be_truthy
         controller.send(:clear_breadcrumbs)
-        helper.breadcrumbs?.should be_false
+        helper.breadcrumbs?.should be_falsey
       end
     end
   end
@@ -139,8 +139,8 @@ describe TwitterBreadcrumbsHelper do
 
     describe "#breadcrumbs?" do
       it "returns false" do
-        helper.breadcrumbs?.should be_false
-        controller.send(:breadcrumbs?).should be_false
+        helper.breadcrumbs?.should be_falsey
+        controller.send(:breadcrumbs?).should be_falsey
       end
     end
 

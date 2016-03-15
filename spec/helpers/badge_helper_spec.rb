@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BadgeHelper do
+describe BadgeHelper, :type => :helper do
   describe "#badge" do
     let(:html) { %(<span class="badge">%i</span>) }
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UrlHelper do
+describe UrlHelper, :type => :helper do
   describe "#button_to" do
     def pattern(label, class_)
       Regexp.new(Regexp.escape(html % [class_, label]))

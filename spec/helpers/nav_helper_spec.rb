@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NavHelper do
+describe NavHelper, :type => :helper do
   describe "#tabs" do
     before do
       def self.current_page?(path)
@@ -11,7 +11,7 @@ describe NavHelper do
     let(:html) {
       <<-TABS.strip_heredoc
           <ul class="nav nav-tabs">
-            <li class="active" role="presentation"><a href="/">Name</a></li>
+            <li role="presentation" class="active"><a href="/">Name</a></li>
             <li role="presentation"><a href="/profile">Profile</a></li>
           </ul>
       TABS

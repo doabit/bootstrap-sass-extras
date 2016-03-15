@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe BootstrapFlashHelper do
+describe BootstrapFlashHelper, :type => :helper do
   describe "#bootstrap_flash" do
-    let(:html) { %(<div class="alert alert-%s alert-dismissable"><button class="close" data-dismiss="alert" type="button">&times;</button>%s</div>) }
+    let(:html) { %(<div class="alert alert-%s alert-dismissable"><button name="button" type="button" class="close" data-dismiss="alert">&times;</button>%s</div>) }
 
     def flash_test(input, output)
-      stub!(:flash).and_return(input)
+      allow(self).to receive(:flash).and_return(input)
       bootstrap_flash.should == html % output.to_a.flatten
     end
 
@@ -45,12 +45,12 @@ describe BootstrapFlashHelper do
     end
 
     it "returns nil when sent a blank message" do
-      stub!(:flash).and_return(notice: "")
+      allow(self).to receive(:flash).and_return(notice: "")
       bootstrap_flash.should be_nil
     end
 
     it "returns nil when message doesn't have an implicit conversion to String" do
-      stub!(:flash).and_return(notice: true)
+      allow(self).to receive(:flash).and_return(notice: true)
       bootstrap_flash.should be_nil
     end
   end
