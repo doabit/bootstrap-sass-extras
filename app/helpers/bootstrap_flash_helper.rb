@@ -5,7 +5,7 @@ module BootstrapFlashHelper
     error: :danger,
     info: :info,
     warning: :warning
-  }
+  }.freeze
 
   def bootstrap_flash
     safe_join(flash.each_with_object([]) do |(type, message), messages|
