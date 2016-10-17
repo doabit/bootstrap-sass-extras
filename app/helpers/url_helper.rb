@@ -17,6 +17,9 @@ module UrlHelper
     html_options[:class] ||= []
     html_options[:class] = [*html_options[:class]]
 
+    # Expand space-separated class strings so that each has its own spot in the class array
+    html_options[:class] = html_options[:class].map { |c| c.split }.flatten
+
     html_options[:class].unshift('btn') unless html_options[:class].include?('btn')
     if html_options[:class].select { |cls| UrlHelper::BUTTON_CLASSES.include?(cls) }.empty?
       html_options[:class] << 'btn-default'
