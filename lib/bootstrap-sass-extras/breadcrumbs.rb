@@ -10,7 +10,7 @@ module BootstrapSassExtras
     module ClassMethods
       def add_breadcrumb(name, url, options = {})
         class_name = self.name
-        before_filter options do |controller|
+        before_action options do |controller|
           if name.is_a?(Symbol)
             name = controller.send :translate_breadcrumb, name, class_name
           end
