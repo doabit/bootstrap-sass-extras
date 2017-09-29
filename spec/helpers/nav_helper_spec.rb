@@ -52,5 +52,28 @@ describe NavHelper, :type => :helper do
         (pills class: 'nav-stacked').should == html
       end
     end
+
+    context "when nav tab_class given" do
+      let(:html) {
+        <<-TABS.strip_heredoc
+            <ul class="nav nav-tabs">
+              <li role="presentation"><a href="/">Name</a></li>
+              <li role="presentation" class="active"><a href="/profile">Profile</a></li>
+            </ul>
+        TABS
+      }
+
+      it "generates the correct tabs" do
+        (nav do
+          concat "\n  "
+          concat (nav_to 'Name', '/', active: false)
+          concat "\n  "
+          concat (nav_to '/profile', active: true do
+            'Profile'
+          end)
+          concat "\n"
+        end + "\n").should == html
+      end
+    end
   end
 end

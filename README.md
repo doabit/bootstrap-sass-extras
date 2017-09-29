@@ -206,6 +206,7 @@ In your views:
     Profile
   <% end %>
   <%= nav_to('Messages', controller: users, action: :messages) %>
+  <%= nav_to('Forced active state', some_path, active: true) %>
 <% end %>
 ```
 
