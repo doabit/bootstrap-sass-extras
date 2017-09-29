@@ -21,10 +21,17 @@ module NavHelper
   end
 
   def nav_to(name = nil, options = nil, html_options = nil, &block)
-    url_options = block_given? ? name : options
+    if block_given?
+      url_options, html_options = name, options
+    else
+      url_options = options
+    end
+
     url_options ||= {}
 
-    tab_class = current_page?(url_options) ? 'active' : nil
+    active = html_options.try(:delete, :active)
+    active = current_page?(url_options) if active.nil?
+    tab_class = active ? 'active' : nil
 
     content_tag(:li, role: 'presentation', class: tab_class) do
       link_to(name, options, html_options, &block)
