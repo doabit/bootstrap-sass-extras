@@ -6,8 +6,11 @@ module BadgeHelper
   # badge(nil)
   #   => nil
 
-  def badge(count)
+  def badge(count, severity = nil)
     return unless count
-    content_tag(:span, count, class: "badge")
+    level = ""
+    level = "badge-#{severity}" if severity.present?
+
+    content_tag(:span, count, class: "badge #{level}")
   end
 end
