@@ -24,7 +24,7 @@ module BootstrapSassExtras
     def add_breadcrumb(name, url = '', options = {})
       @breadcrumbs ||= []
       name = translate_breadcrumb(name, self.class.name) if name.is_a?(Symbol)
-      url = send(url.to_s) if url =~ /_path|_url|@/
+      url = send(url) if url.is_a?(Symbol)
       @breadcrumbs << { name: name, url: url, options: options }
     end
 
